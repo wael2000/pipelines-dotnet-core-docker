@@ -25,6 +25,17 @@ stages:
     pool:
       name: ocp-agent
     steps:
+    - script: |
+        echo "===== Agent Information ====="
+        echo "Agent Name: $(Agent.Name)"
+        echo "Machine Name: $(Agent.MachineName)"
+        echo "Agent OS: $(Agent.OS)"
+        echo "Agent Pool: $(Agent.JobName)"
+        echo "Working Directory: $(Build.SourcesDirectory)"
+        echo ""
+        echo "===== Podman Availability ====="
+        podman version || echo "Podman not available"
+      displayName: Verify OpenShift agent    
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
