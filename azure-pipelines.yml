@@ -23,7 +23,7 @@ stages:
   - job: Build
     displayName: Build
     pool:
-      name: ocp-agent
+      name: ocp-hosted-agents
     steps:
     - script: |
         echo "===== Agent Information ====="
